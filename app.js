@@ -17,7 +17,7 @@ $('#set_pencil').addClass('active');
 canvas = document.getElementById('myCanvas');
 context = canvas.getContext('2d');
 canvasWidth = window.innerWidth;
-canvasHeight = window.innerHeight;
+canvasHeight = window.innerHeight-100;
 context.canvas.width = canvasWidth;
 context.canvas.height = canvasHeight;
 drawOutlineImage();
