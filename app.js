@@ -17,7 +17,7 @@ $('#set_pencil').addClass('active');
 canvas = document.getElementById('myCanvas');
 context = canvas.getContext('2d');
 canvasWidth = window.innerWidth;
-canvasHeight = window.innerHeight-100;
+canvasHeight = window.innerHeight-150;
 context.canvas.width = canvasWidth;
 context.canvas.height = canvasHeight;
 drawOutlineImage();
@@ -29,28 +29,52 @@ $('#save_as_image').click(function(e) {
   	link.setAttribute('href', canvas.toDataURL("image/png"));
 });
 
-$('#myCanvas').on("mousedown touchstart", function(e){
-  	var mouseX = e.pageX - this.offsetLeft;
+// $('#myCanvas').on("mousedown touchstart", function(e){
+//   	var mouseX = e.pageX - this.offsetLeft;
+//   	var mouseY = e.pageY - this.offsetTop;	
+//   	paint = true;
+//   	addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, false);
+//   	redraw();
+// });
+
+// $('#myCanvas').on("mousemove touchmove", function(e){
+//   	if(paint){
+// 	    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+// 	    redraw();
+//   	}
+// });
+
+// $('#myCanvas').on("mouseup touchend", function(e){
+//   	paint = false;
+// });
+
+// $('#myCanvas').on("mouseleave touchcancel", function(e){
+//   	paint = false;
+// });
+
+canvas.addEventListener('touchstart', function(e){
+	var mouseX = e.pageX - this.offsetLeft;
   	var mouseY = e.pageY - this.offsetTop;	
   	paint = true;
   	addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, false);
   	redraw();
-});
+}, false);
 
-$('#myCanvas').on("mousemove touchmove", function(e){
+canvas.addEventListener('touchmove', function(e){
   	if(paint){
 	    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
 	    redraw();
   	}
-});
+}, false);
 
-$('#myCanvas').on("mouseup touchend", function(e){
-  	paint = false;
-});
+canvas.addEventListener('touchend', function(e){
+	paint = false;
+}, false);
 
-$('#myCanvas').on("mouseleave touchend", function(e){
-  	paint = false;
-});
+canvas.addEventListener('touchmove', function(e){
+	paint = false;
+}, false);
+
 
 $('#clear_form').click(function(e) {
 	clickX.length = 0;
