@@ -29,7 +29,7 @@ $('#save_as_image').click(function(e) {
   	link.setAttribute('href', canvas.toDataURL("image/png"));
 });
 
-$('#myCanvas').mousedown(function(e){
+$('#myCanvas').on("mousedown touchstart", function(e){
   	var mouseX = e.pageX - this.offsetLeft;
   	var mouseY = e.pageY - this.offsetTop;	
   	paint = true;
@@ -37,18 +37,18 @@ $('#myCanvas').mousedown(function(e){
   	redraw();
 });
 
-$('#myCanvas').mousemove(function(e){
+$('#myCanvas').on("mousemove touchmove", function(e){
   	if(paint){
 	    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
 	    redraw();
   	}
 });
 
-$('#myCanvas').mouseup(function(e){
+$('#myCanvas').on("mouseup touchend", function(e){
   	paint = false;
 });
 
-$('#myCanvas').mouseleave(function(e){
+$('#myCanvas').on("mouseleave touchend", function(e){
   	paint = false;
 });
 
