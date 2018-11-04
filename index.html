@@ -1,0 +1,77 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Doctor Prescription</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<style type="text/css">
+			* { margin:0; padding:0; } 
+
+			html, body { width:100%; height:100%; } 
+
+			canvas { 
+				display:block; 
+				width:100%;
+	  			height:100%;
+			}
+
+			.headerDivider {
+			    border-left: 1px solid #aaa;
+    			border-top: 8px solid #aaa;
+    			border-bottom: 8px solid #aaa;
+			    height:40px;
+			    top: 0px;
+			    display: inline;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<div class="header" style="padding: 2rem 2rem; background: #f1eded; box-shadow: 0px 4px 10px #ccc;">
+				<div class="">
+					<button type="button" class="btn btn-default" id="set_pencil" data-id="pencil"> <i class="fa fa-pencil fa-lg" aria-hidden="true"></i></button>
+					<button type="button" class="btn btn-default" id="set_eraser" data-id="eraser"> <i class="fa fa-eraser fa-lg" aria-hidden="true"></i></button>
+					&nbsp;&nbsp;<div class="headerDivider"></div>&nbsp;&nbsp;
+					<b>Tool size: </b>
+					<select class="form-control" style="display: inline; width: 10%;"  id="point_size">
+						<option value="1" selected>1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
+					&nbsp;&nbsp;<div class="headerDivider"></div>&nbsp;&nbsp;
+					<input type="button" name="" class="btn btn-primary" value="Save as Image" id="save_as_image">
+					<input type="button" name="" class="btn btn-default" value="Clear" id="clear_form">
+				</div>
+			</div>
+			<div class="canvas-body">
+				<canvas id="myCanvas">
+					<img src="./images/bg1.png" id="bg-cover">
+					Your browser does not support the HTML5 canvas tag.
+				</canvas>
+			</div>
+		</div>
+
+		<script
+		  	src="https://code.jquery.com/jquery-3.3.1.min.js"
+		  	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		  	crossorigin="anonymous"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</body>
+</html>
