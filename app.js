@@ -61,7 +61,7 @@ canvas.addEventListener('touchstart', function(e){
 }, false);
 
 canvas.addEventListener('touchmove', function(e){
-  	if(paint){
+	if(paint){
 	    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
 	    redraw();
   	}
@@ -71,7 +71,7 @@ canvas.addEventListener('touchend', function(e){
 	paint = false;
 }, false);
 
-canvas.addEventListener('touchmove', function(e){
+canvas.addEventListener('touchcancel', function(e){
 	paint = false;
 }, false);
 
