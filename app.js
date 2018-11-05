@@ -30,6 +30,7 @@ $('#save_as_image').click(function(e) {
 });
 
 $('#myCanvas').on("mousedown touchstart", function(e){
+	onStart(e);
   	var mouseX = e.pageX - this.offsetLeft;
   	var mouseY = e.pageY - this.offsetTop;	
   	paint = true;
@@ -38,10 +39,8 @@ $('#myCanvas').on("mousedown touchstart", function(e){
 });
 
 $('#myCanvas').on("mousemove touchmove", function(e){
-  	console.log('here executes');
   	if(paint){
-  		console.log('touchmove gathering');
-	    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+  	    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
 	    redraw();
   	}
 });
@@ -100,6 +99,14 @@ $('#set_pencil, #set_eraser').click(function(e) {
 	$(this).addClass('active');
 });
 
+
+// This event is needed to allow touchmove effectively work
+function onStart ( touchEvent ) {
+  if( navigator.userAgent.match(/Android/i) ) {
+  	console.log('android');
+    touchEvent.preventDefault();
+  }
+}
 
 function drawOutlineImage()
 {
