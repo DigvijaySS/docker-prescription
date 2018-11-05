@@ -38,7 +38,9 @@ $('#myCanvas').on("mousedown touchstart", function(e){
 });
 
 $('#myCanvas').on("mousemove touchmove", function(e){
+  	console.log('here executes');
   	if(paint){
+  		console.log('touchmove gathering');
 	    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
 	    redraw();
   	}
@@ -111,11 +113,9 @@ function addClick(x, y, dragging)
   	clickY.push(y);
   	clickDrag.push(dragging);
   	if(curTool == "eraser"){
-  		console.log(curTool);
-    	clickColor.push("white");
+  		clickColor.push("white");
   	}else{
-  		console.log(curTool);
-    	clickColor.push(curColor);
+  		clickColor.push(curColor);
   	}
   	clickSize.push(curSize);
 }
