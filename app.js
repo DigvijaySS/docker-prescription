@@ -17,10 +17,14 @@ $('#set_pencil').addClass('active');
 canvas = document.getElementById('myCanvas');
 context = canvas.getContext('2d');
 canvasWidth = window.innerWidth;
-canvasHeight = window.innerHeight-150;
+canvasHeight = window.innerHeight;
 context.canvas.width = canvasWidth;
 context.canvas.height = canvasHeight;
-drawOutlineImage();
+// drawOutlineImage();
+
+$(document).ready(function() {
+	drawOutlineImage();
+});
 
 // Download as image
 $('#save_as_image').click(function(e) {
@@ -30,8 +34,7 @@ $('#save_as_image').click(function(e) {
 });
 
 $('#myCanvas').on("mousedown touchstart", function(e){
-	onStart(e);
-  	var mouseX = e.pageX - this.offsetLeft;
+	var mouseX = e.pageX - this.offsetLeft;
   	var mouseY = e.pageY - this.offsetTop;	
   	paint = true;
   	addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, false);
@@ -40,20 +43,24 @@ $('#myCanvas').on("mousedown touchstart", function(e){
 
 $('#myCanvas').on("mousemove touchmove", function(e){
   	if(paint){
+  		onStart(e);
   	    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
 	    redraw();
   	}
 });
 
 $('#myCanvas').on("mouseup touchend", function(e){
+	console.log('ended');
   	paint = false;
 });
 
 $('#myCanvas').on("mouseleave touchcancel", function(e){
+	console.log('cancelled');
   	paint = false;
 });
 
 // canvas.addEventListener('touchstart', function(e){
+// 	e.preventDefault();
 // 	var mouseX = e.pageX - this.offsetLeft;
 //   	var mouseY = e.pageY - this.offsetTop;	
 //   	paint = true;
@@ -102,10 +109,10 @@ $('#set_pencil, #set_eraser').click(function(e) {
 
 // This event is needed to allow touchmove effectively work
 function onStart ( touchEvent ) {
-  if( navigator.userAgent.match(/Android/i) ) {
+  // if( navigator.userAgent.match(/Android/i) ) {
   	console.log('android');
-    touchEvent.preventDefault();
-  }
+    // touchEvent.preventDefault();
+  // }
 }
 
 function drawOutlineImage()
@@ -133,7 +140,6 @@ function redraw()
 	drawOutlineImage();
 
   	context.lineJoin = "round";
-  			
   	for(var i=0; i < clickX.length; i++) {		
 	    context.beginPath();
 	    if(clickDrag[i] && i){
