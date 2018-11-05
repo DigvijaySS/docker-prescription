@@ -29,51 +29,51 @@ $('#save_as_image').click(function(e) {
   	link.setAttribute('href', canvas.toDataURL("image/png"));
 });
 
-// $('#myCanvas').on("mousedown touchstart", function(e){
-//   	var mouseX = e.pageX - this.offsetLeft;
-//   	var mouseY = e.pageY - this.offsetTop;	
-//   	paint = true;
-//   	addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, false);
-//   	redraw();
-// });
-
-// $('#myCanvas').on("mousemove touchmove", function(e){
-//   	if(paint){
-// 	    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-// 	    redraw();
-//   	}
-// });
-
-// $('#myCanvas').on("mouseup touchend", function(e){
-//   	paint = false;
-// });
-
-// $('#myCanvas').on("mouseleave touchcancel", function(e){
-//   	paint = false;
-// });
-
-canvas.addEventListener('touchstart', function(e){
-	var mouseX = e.pageX - this.offsetLeft;
+$('#myCanvas').on("mousedown touchstart", function(e){
+  	var mouseX = e.pageX - this.offsetLeft;
   	var mouseY = e.pageY - this.offsetTop;	
   	paint = true;
   	addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, false);
   	redraw();
-}, false);
+});
 
-canvas.addEventListener('touchmove', function(e){
-	if(paint){
+$('#myCanvas').on("mousemove touchmove", function(e){
+  	if(paint){
 	    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
 	    redraw();
   	}
-}, false);
+});
 
-canvas.addEventListener('touchend', function(e){
-	paint = false;
-}, false);
+$('#myCanvas').on("mouseup touchend", function(e){
+  	paint = false;
+});
 
-canvas.addEventListener('touchcancel', function(e){
-	paint = false;
-}, false);
+$('#myCanvas').on("mouseleave touchcancel", function(e){
+  	paint = false;
+});
+
+// canvas.addEventListener('touchstart', function(e){
+// 	var mouseX = e.pageX - this.offsetLeft;
+//   	var mouseY = e.pageY - this.offsetTop;	
+//   	paint = true;
+//   	addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, false);
+//   	redraw();
+// }, false);
+
+// canvas.addEventListener('touchmove', function(e){
+// 	if(paint){
+// 	    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+// 	    redraw();
+//   	}
+// }, false);
+
+// canvas.addEventListener('touchend', function(e){
+// 	paint = false;
+// }, false);
+
+// canvas.addEventListener('touchcancel', function(e){
+// 	paint = false;
+// }, false);
 
 
 $('#clear_form').click(function(e) {
